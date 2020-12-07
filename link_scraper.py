@@ -3,6 +3,8 @@ import time
 from selenium import webdriver
 import queue
 from threading import Thread
+from selenium.webdriver.chrome.options import Options
+
 
 link_q = queue.Queue()
 
@@ -40,7 +42,11 @@ def scrape_product_links(url, driver):
 
 if __name__ == "__main__":
     urls = read_url()
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome('/home/flipkart_scrape/chromedriver',chrome_options=chrome_options)
     
     Thread(target=write_to_file, daemon=True).start()
     
