@@ -46,7 +46,7 @@ if __name__ == "__main__":
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome('/home/flipkart_scrape/chromedriver',chrome_options=chrome_options)
+    driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver',chrome_options=chrome_options)
     
     Thread(target=write_to_file, daemon=True).start()
     
