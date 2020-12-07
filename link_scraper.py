@@ -43,11 +43,12 @@ def scrape_product_links(url, driver):
 
 if __name__ == "__main__":
     urls = read_url()
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver',chrome_options=chrome_options)
+    # chrome_options = Options()
+    # chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--no-sandbox')
+    # chrome_options.add_argument('--disable-dev-shm-usage')
+    # driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver',chrome_options=chrome_options)
+    driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver')
     
     Thread(target=write_to_file, daemon=True).start()
     
