@@ -31,7 +31,7 @@ def scrape_product_links(url, driver):
     limit = int(driver.find_element_by_xpath(
         "/html/body/div[1]/div/div[3]/div[2]/div[1]/div[2]/div[12]/div/div/span[1]").text.split(" ")[-1].replace(",",""))
     count = 0
-    for index in range(1,limit+1):
+    for index in range(1,40):
         driver.get(url+"&page={}".format(index))
         for item in driver.find_elements_by_class_name("s1Q9rs"):
             link_q.put(item.get_attribute('href'))
