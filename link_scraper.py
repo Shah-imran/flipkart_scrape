@@ -34,9 +34,10 @@ def scrape_product_links(url, driver):
     for index in range(1,limit+1):
         driver.get(url+"&page={}".format(index))
         for item in driver.find_elements_by_class_name("s1Q9rs"):
-            link_q.put(base_add+item.get_attribute('href'))
+            link_q.put(item.get_attribute('href'))
             count+=1
         print("Page - {} link Count - {}".format(index, count), end="\r")
+    print("Page - {} link Count - {}".format(index, count), end="\n")
 
 
 
@@ -48,7 +49,7 @@ if __name__ == "__main__":
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver',chrome_options=chrome_options)
-    # driver = webdriver.Chrome('/root/flipkart_scrape/chromedriver')
+    # driver = webdriver.Chrome()
     
     Thread(target=write_to_file, daemon=True).start()
     
